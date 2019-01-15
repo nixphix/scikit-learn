@@ -65,6 +65,26 @@ def test_make_classification():
                  "Unexpected number of unique rows")
 
 
+@pytest.mark.parametrize("n_clusters_per_class", [1, 2])
+@pytest.mark.parametrize("n_samples,label_count", [
+    (30, [3, 6, 21]),
+    (100, [10, 20, 70]),
+    (10000, [1000, 2000, 7000]),
+    ])
+def test_make_classification_cluster(n_samples, label_count,
+                                     n_clusters_per_class):
+    n_classes = 3
+    weights = [0.1, 0.2]
+    X, y = make_classification(n_samples=n_samples, n_classes=n_classes,
+                               n_clusters_per_class=n_clusters_per_class,
+                               n_informative=3, weights=weights,
+                               random_state=0)
+    _, count = np.unique(y, return_counts=True)
+
+    assert_equal(y.shape[0], n_samples)
+    assert_array_equal(count, label_count)
+
+
 def test_make_classification_informative_features():
     """Test the construction of informative features in make_classification
 
