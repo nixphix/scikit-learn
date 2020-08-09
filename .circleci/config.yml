@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: dependencies
-          command: sudo pip install check-manifest numpy
+          command: sudo pip install check-manifest scipy cython
       - run:
           name: check-manifest
           command: check-manifest
