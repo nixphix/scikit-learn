@@ -11,7 +11,7 @@ jobs:
           command: sudo pip install check-manifest scipy cython
       - run:
           name: check-manifest
-          command: check-manifest
+          command: check-manifest -v
 
 workflows:
   version: 2
