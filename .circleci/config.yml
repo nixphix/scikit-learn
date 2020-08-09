@@ -13,8 +13,8 @@ jobs:
           name: flake8
           command: flake8
       - run:
-        name: check-manifest
-        command: check-manifest
+          name: check-manifest
+          command: check-manifest
 
 workflows:
   version: 2
