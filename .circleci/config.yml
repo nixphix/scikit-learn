@@ -8,10 +8,13 @@ jobs:
       - checkout
       - run:
           name: dependencies
-          command: sudo pip install check-manifest
+          command: sudo pip install check-manifest flake8
       - run:
-          name: check-manifest
-          command: check-manifest
+          name: flake8
+          command: flake8
+          - run:
+            name: check-manifest
+            command: check-manifest
 
 workflows:
   version: 2
