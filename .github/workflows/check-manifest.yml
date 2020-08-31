@@ -1,0 +1,16 @@
+name: "Check Manifest"
+
+on: [push]
+  # schedule:
+  #   - cron: '*/5 * * * *'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo pip3 install check-manifest scipy cython
+        shell: bash
+      - run: check-manifest -v
+        shell: bash
